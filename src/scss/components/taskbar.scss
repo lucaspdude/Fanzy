@@ -1,0 +1,79 @@
+.taskbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+
+  .page-title {
+    margin-right: 10px;
+
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+  }
+
+  .legenda-wrapper {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+
+    .legenda {
+      font-size: 12px !important;
+      display: inline-block;
+      margin-right: 5px;
+      justify-content: center;
+      
+
+      &.red {
+        background-color: #333333;
+      }
+      &.yellow {
+        background-color: #ffc536;
+      }
+      &.green{
+        background-color: $green;
+      }
+
+      &.square {
+        width: 15px;
+        height: 15px;
+      }
+      &.circle {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  
+  .filtros {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    input{
+      display: inline;
+      margin-bottom: 0;
+      background-color: $dark;
+      color: $white;
+      min-width: 300px;
+      text-transform: initial;
+
+      &::placeholder{
+        color: $white;
+        text-transform: unset;
+      }
+    }
+
+    .btn {
+      margin-left: 5px;
+      font-size: 12px;
+      color: #fff;
+      height: 40px;
+    }
+  }
+}

@@ -1,0 +1,252 @@
+$num_columns: 12;
+$gutter: 32px;
+
+$env: 'development' !default;
+$path: '../images/' !default;
+
+@if ($env == 'production') {
+  $path: '../img/';
+}
+
+//import bootstrap
+
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/root';
+@import 'node_modules/bootstrap/scss/print';
+@import 'node_modules/bootstrap/scss/reboot';
+@import 'node_modules/bootstrap/scss/type';
+//@import "node_modules/bootstrap/scss/images";
+@import 'node_modules/bootstrap/scss/code';
+@import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/tables';
+@import 'node_modules/bootstrap/scss/forms';
+@import 'node_modules/bootstrap/scss/buttons';
+@import 'node_modules/bootstrap/scss/utilities';
+
+//base application
+//@import "base/typography";
+@import 'base/mixins';
+@import 'base/animations';
+@import 'base/styleguide';
+//@import "base/image-aspect-ratio";
+
+//components
+@import 'components/buttons.scss';
+@import 'components/header.scss';
+@import 'components/footer.scss';
+@import 'components/forms.scss';
+@import 'components/cards.scss';
+
+@import 'components/taskbar.scss';
+
+@import 'components/modal.scss';
+//layouts
+.mesas_list_wrapper {
+  .mesas_list_item {
+    max-width: 24%;
+  }
+}
+
+.produto-img-form-label {
+  margin: 5px;
+  input[type='radio'] {
+    border-radius: 50%;
+    &:after {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--active-inner);
+      opacity: 0;
+      transform: scale(var(--s, 0.7));
+    }
+    &:checked {
+      --s: 0.5;
+    }
+  }
+
+  label {
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+  }
+}
+
+.produto-img-form-cardapios {
+  // width: 150px;
+  margin: 5px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cardapio-itens-wrapper {
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .cardapio-item {
+    margin-bottom: 5px;
+  }
+
+  .cardapio-item-body {
+    img.cardapio-item-body-imagem {
+      width: 200px;
+    }
+
+    .cardapio-item-body-meta {
+      h4:before {
+        content: 'R$ ';
+      }
+      h4 {
+        font-size: 20px;
+        color: rgba($color: #178b68, $alpha: 1);
+        font-weight: bold;
+      }
+      h5 {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .adicional-container {
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+      font-size: 12px;
+      font-weight: lighter;
+      margin-bottom: 5px;
+      &:last-child {
+        border-bottom: 0;
+      }
+      .adicional-texto {
+        font-size: 14px;
+      }
+      .adicional-valor:before {
+        content: 'R$ ';
+      }
+      .adicional-valor {
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba($color: #178b68, $alpha: 1);
+      }
+    }
+  }
+}
+
+.mesas-imprimir-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 5px;
+  padding: 5px;
+
+  .mesas-imprimir-item {
+    // border: 1px solid rgba($color: #000000, $alpha: 0.3);
+    padding: 5px;
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .mesas-imprimir-item-qrcode {
+      align-items: center;
+      justify-content: center;
+
+      canvas {
+      }
+    }
+  }
+}
+
+// painel de pedidos
+
+.card-wrapper {
+  margin-top: 15px;
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) ;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  // grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+
+  .card-single-wrap {
+    display: inline;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    min-width: 200px;
+
+    .card-single-numero-mesa {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-left: -15px;
+      margin-bottom: -25px;
+      z-index: 10;
+      border: 1px solid $red;
+      background-color: $red;
+      color: $white;
+      width: 40px;
+      height: 40px;
+      font-weight: bold;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .card {
+      min-height: 150px;
+    }
+    .card-bottom-action {
+      background-color: #333333;
+      justify-content: center;
+      color: #fff;
+
+      button {
+        color: #fff;
+        .card-bottom-action-icon {
+          align-self: center;
+          color: #fff !important;
+        }
+      }
+    }
+  }
+}
+
+// MESAS OCUPADAS
+
+.mesa-ocupada-info {
+  &.mesa-ocupada-class {
+    border: 1px solid #333333;
+  }
+
+  .mesa-ocupada-info-users {
+    max-width: 30%;
+    width: 30%;
+
+    .profile-picure {
+      position: relative;
+      margin-left: -5px;
+    }
+
+    img.mesa-ocupada-info-picure {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+  }
+
+  .mesa-ocupada-info-produto {
+    font-size: 14px;
+    color: $green;
+  }
+}
